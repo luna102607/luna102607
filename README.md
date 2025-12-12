@@ -1,60 +1,46 @@
-<!-- Profile Header -->
-<h1 align="center">Exploring the world of software</h1>
-
-<p align="center">
-  "Only wimps use tape backup. REAL men just upload their important stuff on ftp and let the rest of the world mirror it."<br>
-  — Linus Torvalds
-</p>
+<h1 align="center">Hi there 👋</h1>
+<p align="center">Welcome to my GitHub profile!</p>
 
 ---
 
-<!-- Badges / Status -->
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=luna102607&style=flat&color=blue" alt="Profile views"/>
-  <img src="https://img.shields.io/badge/playing-nothing-important-green" />
-  <img src="https://img.shields.io/badge/coding-nothing-important-purple" />
-  <img src="https://img.shields.io/badge/listening-to%20nothing%20important-yellow" />
-</p>
+## 🚀 About Me
+
+- 🌱 I’m currently learning **programming & open-source basics**
+- 🧪 I love experimenting with new tools, languages, and ideas  
+- 💡 Fun fact: *I use dark mode because light attracts bugs*  
+- 🎯 Goal: Become a better developer one commit at a time  
 
 ---
 
-## 🧪 GitHub Stats
+## 🔧 Tech I'm Learning
 
-<p align="center">
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=luna102607E&show_icons=true&theme=tokyonight" />
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=luna102607&layout=compact&theme=tokyonight" />
+<p align="left">
+  <img src="https://img.shields.io/badge/HTML-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/Python-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white"/>
 </p>
+
+*(You can remove or add badges based on what you’re learning)*
 
 ---
 
-## 🔥 Streak Stats
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=YOUR_USERNAME&theme=tokyonight" />
-</p>
+## 📚 What I'm Doing Here
+
+- ✨ Building small beginner projects  
+- 🔍 Learning Git & GitHub  
+- 📁 Exploring open-source  
+- 🎨 Making my profile look cooler 😎  
 
 ---
 
-## 🏅 GitHub Trophies
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=luna102607&theme=discord&no-frame=true&row=1&margin-w=15" />
-</p>
+## 📫 Connect With Me
+
+- 💬 Feel free to reach out or ask questions  
+- 🌐 (Add your website or social link here later when you have one)  
 
 ---
 
-## 📫 Contact/About Me
-- Currently learning: C  
--  Fun fact: I use dark mode because light attracts bugs.
-<!--
-**luna102607/luna102607** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## ⭐ Thanks for Visiting!
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<p align="center">If you like something here, consider leaving a ⭐</p>
