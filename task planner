@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultimate CS Student Planner</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0b0b0f;
+  --card: #15151c;
+  --soft: #1f1f2b;
+  --accent: #4ade80;
+  --text-dim: #9ca3af;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: var(--bg);
+  color: white;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  background: #111118;
+  padding: 20px;
+}
+.sidebar h2 { margin-bottom: 20px; }
+.sidebar a {
+  display: block;
+  color: var(--text-dim);
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+.sidebar a:hover { color: white; }
+
+/* Main */
+.main {
+  flex: 1;
+  padding: 24px;
+}
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Courses */
+.courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 14px;
+}
+.course {
+  background: var(--soft);
+  padding: 14px;
+  border-radius: 12px;
+}
+.course span { font-size: 22px; }
+
+/* Progress */
+.progress {
+  height: 6px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress div {
+  height: 100%;
+  background: var(--accent);
+}
+
+/* Todo */
+.todo input {
+  width: 100%;
+  padding: 8px;
+  background: #111;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+.todo ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+.todo li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+/* Projects */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.project {
+  background: var(--soft);
+  padding: 12px;
+  border-radius: 12px;
+}
+
+/* Auth */
+.auth {
+  max-width: 320px;
+  margin: 100px auto;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+}
+.auth input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #111;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="auth" class="auth">
+  <h2>🔐 Login</h2>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+
+<div id="app" class="app" style="display:none;">
+  <div class="sidebar">
+    <h2>💻 CS Planner</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Courses</a>
+    <a href="#">Coding</a>
+    <a href="#">Projects</a>
+  </div>
+
+  <div class="main">
+    <div class="title">Ultimate CS Student Planner</div>
+
+    <!-- Courses -->
+    <div class="card">
+      <h3>Courses</h3>
+      <div class="courses" id="courses"></div>
+    </div>
+
+    <!-- Widgets -->
+    <div class="grid">
+      <div class="card">
+        <h3>Daily Coding Goal</h3>
+        <div class="progress"><div id="progress"></div></div>
+        <p id="progressText"></p>
+      </div>
+
+      <div class="card">
+        <h3>GitHub</h3>
+        <input placeholder="GitHub username" onblur="loadGitHub(this.value)">
+        <p id="githubData">No data</p>
+      </div>
+
+      <div class="card todo">
+        <h3>Todo</h3>
+        <input placeholder="Add task" onkeydown="addTodo(event)">
+        <ul id="todoList"></ul>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="card">
+      <h3>Projects</h3>
+      <div class="projects" id="projects"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* AUTH (LOCAL MOCK) */
+function login() {
+  localStorage.setItem("auth", "true");
+  document.getElementById("auth").style.display = "none";
+  document.getElementById("app").style.display = "flex";
+}
+if (localStorage.getItem("auth")) login();
+
+/* COURSES */
+const courses = [
+  ["🧠","DSA"],["🖥️","OS"],["🗄️","DBMS"],["🌐","Networks"],
+  ["🤖","AI"],["💡","Web Dev"],["⚙️","Compilers"]
+];
+document.getElementById("courses").innerHTML =
+  courses.map(c=>`<div class="course"><span>${c[0]}</span>${c[1]}</div>`).join("");
+
+/* CODING TRACKER */
+let solved = 3, total = 5;
+document.getElementById("progress").style.width = (solved/total*100)+"%";
+document.getElementById("progressText").innerText =
+  `${solved} / ${total} problems solved`;
+
+/* TODO */
+let todos = JSON.parse(localStorage.getItem("todos")||"[]");
+function renderTodos() {
+  const ul = document.getElementById("todoList");
+  ul.innerHTML = "";
+  todos.forEach((t,i)=>{
+    ul.innerHTML += `<li onclick="removeTodo(${i})">${t} ❌</li>`;
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+function addTodo(e){
+  if(e.key==="Enter"){
+    todos.push(e.target.value);
+    e.target.value="";
+    renderTodos();
+  }
+}
+function removeTodo(i){
+  todos.splice(i,1);
+  renderTodos();
+}
+renderTodos();
+
+/* PROJECTS */
+const projects = [
+  ["LeetCode Tracker","React + Node","In Progress"],
+  ["Chat App","WebSocket","Completed"],
+  ["OS Scheduler","C++","Planned"]
+];
+document.getElementById("projects").innerHTML =
+  projects.map(p=>`
+    <div class="project">
+      <b>${p[0]}</b>
+      <div style="font-size:12px;color:var(--text-dim)">${p[1]}</div>
+      <div style="color:var(--accent);font-size:12px">${p[2]}</div>
+    </div>`).join("");
+
+/* GITHUB FETCH */
+function loadGitHub(user){
+  fetch(`https://api.github.com/users/${user}`)
+    .then(r=>r.json())
+    .then(d=>{
+      document.getElementById("githubData").innerText =
+        `Repos: ${d.public_repos} • Followers: ${d.followers}`;
+    })
+    .catch(()=>document.getElementById("githubData").innerText="User not found");
+}
+</script>
+
+</body>
+</html>
+
